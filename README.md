@@ -34,7 +34,7 @@ https://gitlab.lrz.de/hm-striegle/pypho
 > cd path/to/phypho-folder
 
 ## Run the docker container
-docker run -it -p 9000:8888 --mount src="$(pwd)",target=/pypho/local,type=bind holtmanm/pypho-docker
+docker run -it -p 9000:8888 --mount src="$(pwd)",target=/pypho/local,type=bind holtmannm/pypho-docker
 
 ## Access the jupyter server via browser-address
 http://localhost:9000/tree?
