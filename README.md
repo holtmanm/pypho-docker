@@ -13,4 +13,28 @@ https://gitlab.lrz.de/hm-striegle/pypho
   - Cython
 
 # Installation
-## Option 1 (recommended): Use the prebuild docker image
+## Install Docker
+On Windows:
+https://docs.docker.com/docker-for-windows/install/
+On Ubuntu/Debian:
+> sudo apt-get install docker.io
+
+## Allow mounting your Drive in Docker (Windows)
+- Rightclick on Docker-Tray-Icon
+- Settings
+- Resources
+- File Sharing
+- Select local drive(s) and restart 
+
+## Download pypho & Decompress
+https://gitlab.lrz.de/hm-striegle/pypho
+
+# Running the docker container
+## Open a Terminal (Linux) / Powershell (Windows) and change the path to your folder: 
+> cd path/to/phypho-folder
+
+## Run the docker container
+run -it -p 9000:8888 --mount src="$(pwd)",target=/pypho/local,type=bind holtmanm/pypho-docker
+
+## Access the jupyter server via browser-address
+http://localhost:9000/tree?
