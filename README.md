@@ -38,3 +38,6 @@ docker run -it -p 9000:8888 --mount src="$(pwd)",target=/pypho/local,type=bind h
 
 ## Access the jupyter server via browser-address
 http://localhost:9000/tree?
+- You can access your local files by pressing on the "local"-Folder in the jupyter-notebook-tree
+- Changes made in other directories will be discarded once the Docker-Container is shut down. 
+- Note: You may have to create a folder with the name "config" to run some of the examples.
