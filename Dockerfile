@@ -7,6 +7,7 @@ RUN conda install ipywidgets
 RUN conda install sphinx
 RUN jupyter nbextension install --py widgetsnbextension --user
 RUN jupyter nbextension enable widgetsnbextension --user --py
+RUN apt-get install -y python-numpy python-scipy python-pyfftw python-matplotlib 
 
 RUN apt-get install -y \
 make \
@@ -30,7 +31,8 @@ pip install \
 numpy \
 scipy \
 matplotlib \
-ipykernel"
+ipykernel \
+sympy"
 RUN bash -c "source activate pypho-py37 && \
 conda install -c conda-forge pyfftw"
 
@@ -42,7 +44,8 @@ pip install \
 numpy \
 scipy \
 matplotlib \
-ipykernel"
+ipykernel \
+sympy"
 RUN bash -c "source activate pypho-py27 && \
 conda install -c conda-forge pyfftw"
 
@@ -62,9 +65,14 @@ make install
 
 
 RUN bash -c "source activate pypho-py37 && \
-pip install Cython"
+pip install Cython && \
+cd pypho && \
+python speedup.py build_ext --inplace"
+
 RUN bash -c "source activate pypho-py27 && \
-pip install Cython"
+pip install Cython && \
+cd pypho && \
+python speedup.py build_ext --inplace"
 
 RUN bash -c "source activate pypho-py37 && \
 python -m ipykernel install --user --name=pypho-py37 && \
